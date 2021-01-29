@@ -26,5 +26,6 @@ jobs:
     - name: scp
       run: |
         echo "${{ secrets.SECRET_KEY }}" > key
+        chmod 600 key
         scp -P 322 -o "StrictHostKeyChecking no" -i key target/*.jar root@${{ secrets.SECRET_HOST }}:/Tools/
         rm key -rf
