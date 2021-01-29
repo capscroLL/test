@@ -27,4 +27,4 @@ jobs:
       run: |
         mkdir -p ~/.ssh
         echo "${{ secrets.SECRET_KEY }}" > ~/.ssh/id_rsa
-        scp target/*.jar root@${{ secrets.SECRET_HOST }}:/Tools/
+        scp -P 322 target/*.jar root@${{ secrets.SECRET_HOST }}:/Tools/
