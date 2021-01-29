@@ -25,6 +25,6 @@ jobs:
       
     - name: scp
       run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.SECRET_KEY }}" > ~/.ssh/id_rsa
-        scp -P 322 target/*.jar root@${{ secrets.SECRET_HOST }}:/Tools/
+        echo "${{ secrets.SECRET_KEY }}" > key
+        scp -P 322 -o "StrictHostKeyChecking no" -i key target/*.jar root@${{ secrets.SECRET_HOST }}:/Tools/
+        rm key -rf
